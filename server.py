@@ -336,6 +336,13 @@ def splash_page():
     return template('splash_page', ip_lookup=ip_lookup, url=url)
 
 
+@route('/match_details')
+def match_details():
+    my_ip = get_node_ip()
+    url = "http://{}:{}".format(my_ip, settings.get_listen_port())
+    return template('match_details', url=url)
+
+
 @error(403)
 def mistake403(code):
     return 'The parameter you passed has the wrong format!'
